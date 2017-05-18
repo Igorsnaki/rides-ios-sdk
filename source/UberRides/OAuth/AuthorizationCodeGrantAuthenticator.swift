@@ -62,6 +62,10 @@ import UIKit
     }
     
     func executeRedirect(_ request: URLRequest) {
-        URLSession.shared.dataTask(with: request).resume()
+        //        URLSession.shared.dataTask(with: request).resume()
+        let url = URL(string: (request.url?.absoluteString)!)
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.openURL(url!)
+        }
     }
 }
